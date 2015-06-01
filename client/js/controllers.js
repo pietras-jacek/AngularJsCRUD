@@ -1,15 +1,15 @@
 
 
-function CreateCtrl ($scope, $location, CarsService) {
+function CreateCtrl ($scope, $location, BikesService) {
   $scope.action = 'Add'
   $scope.save = function() {
-    CarsService.save($scope.car, function() {
+    BikesService.save($scope.bike, function() {
       $location.path('/')
     })
   }  
 }
 
-function ListCtrl ($scope, $http, CarsService) {
+function ListCtrl ($scope, $http, BikesService) {
   var index = -1;
 
   //for pagination and searching
@@ -18,12 +18,12 @@ function ListCtrl ($scope, $http, CarsService) {
   $scope.total = 0
   $scope.pageCount = 0
 
-  $scope.cars = CarsService.query()
+  $scope.bikes = BikesService.query()
 
   $scope.index = index; //currently selected element
   $scope.selectedId = -1; //actual id of selected car
 
-  $http.get('/api/cars/total').success(function(body) {
+  $http.get('/api/bikes/total').success(function(body) {
     $scope.total = body.total
     $scope.pageCount = Math.floor($scope.total / $scope.limit) 
     if ($scope.total % $scope.limit !== 0)
@@ -34,34 +34,34 @@ function ListCtrl ($scope, $http, CarsService) {
   $scope.select = function(i) {
     $scope.index = index
     index = i
-    $scope.selectedId = $scope.cars[index].id
+    $scope.selectedId = $scope.bikes[index].id
   }
 
   $scope.delete = function() {
     if (index >= 0) {
-      CarsService.delete({id: $scope.cars[index].id})
-      $scope.cars.splice(index, 1)
+      BikesService.delete({id: $scope.bikes[index].id})
+      $scope.bikes.splice(index, 1)
     }
   }
 
   $scope.loadPage = function (pg) {
     $scope.offset = pg - 1
-    $scope.cars = CarsService.query({offset: $scope.offset, limit: $scope.limit})
+    $scope.bikes = BikesService.query({offset: $scope.offset, limit: $scope.limit})
   }
 
 }
 
-function EditCtrl ($scope, $location, $routeParams, CarsService) {
+function EditCtrl ($scope, $location, $routeParams, BikesService) {
   var id = $routeParams.id
-  CarsService.get({id: id}, function(resp) {
-    $scope.car = resp.content  
+  BikesService.get({id: id}, function(resp) {
+    $scope.bike = resp.content  
   })
-  //$scope.car = CarsService.get({id: id})
+
   $scope.action = "Update"
 
 
   $scope.save = function() {
-    CarsService.update({id: id}, $scope.car, function() {
+    BikesService.update({id: id}, $scope.bike, function() {
       $location.path('/')
     })
   }

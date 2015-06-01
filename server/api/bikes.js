@@ -27,33 +27,33 @@ function list (req, res) {
 }
 
 function create (req, res) {
-  var newCar = req.body
-  newCar.id = getLastId() + 1
-  DATA.push(newCar)
+  var newBike = req.body
+  newBike.id = getLastId() + 1
+  DATA.push(newBike)
   saveDB(function(err) {
     if (err) 
       res.json(formatRespData(0, err))
     else
-      res.json(formatRespData({id: newCar.id}))
+      res.json(formatRespData({id: newBike.id}))
   })
 }
 
 function read (req, res) {
   var id = ~~req.params.id
-  var car = _(DATA).find(function(car) { return car.id === id })
+  var bike = _(DATA).find(function(bike) { return bike.id === id })
 
-  if (!car)
-    res.json(formatRespData(0, "Can't find car with id: " + id))
+  if (!bike)
+    res.json(formatRespData(0, "Nie mogę odnaleźć roweru o id: " + id))
   else
-    res.json(formatRespData(car))
+    res.json(formatRespData(bike))
 }
 
 function update (req, res) {
   var id = ~~req.params.id
-  var car = _(DATA).find(function(car) { return car.id === id })
+  var bike = _(DATA).find(function(bike) { return bike.id === id })
 
   var newCarData = req.body
-  car = _(car).extend(newCarData)
+  bike = _(bike).extend(newCarData)
 
   saveDB(function(err) {
     if (err) 
@@ -65,10 +65,10 @@ function update (req, res) {
 
 function del (req, res) {
   var id = ~~req.params.id
-  var car = _(DATA).find(function(car) { return car.id === id })
+  var bike = _(DATA).find(function(bike) { return bike.id === id })
 
-  var idx = DATA.indexOf(car)
-  if (idx < 0) return res.json(formatRespData(0, "Could not find car with id: " + id))
+  var idx = DATA.indexOf(bike)
+  if (idx < 0) return res.json(formatRespData(0, "Nie mogę odnaleźć roweru o id: " + id))
 
   DATA.splice(idx, 1)
 

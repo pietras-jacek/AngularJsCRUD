@@ -1,6 +1,6 @@
-var CarApp = angular.module('CarApp', ['ngResource'])
+var BikeApp = angular.module('BikeApp', ['ngResource'])
 
-CarApp.config(function($routeProvider, $locationProvider) {
+BikeApp.config(function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {controller: ListCtrl, templateUrl: '/partials/list.html'}) 
     .when('/edit/:id', {controller: EditCtrl, templateUrl: '/partials/details.html'})
@@ -9,18 +9,18 @@ CarApp.config(function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true)
 })
 
-CarApp.factory('CarsService', function($resource) {
-  return $resource('/api/cars/:id', {id: '@id'}, {update: {method: 'PUT'}})
+BikeApp.factory('BikesService', function($resource) {
+  return $resource('/api/bikes/:id', {id: '@id'}, {update: {method: 'PUT'}})
 })
 
-CarApp.filter('mileage', function() {
+BikeApp.filter('mileage', function() {
   return function(input) {
     return input.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 })
 
 //http://stackoverflow.com/questions/11873570/angularjs-for-loop-with-numbers-ranges
-CarApp.filter('range', function() {
+BikeApp.filter('range', function() {
   return function(input) {
       var lowBound, highBound;
       switch (input.length) {
@@ -42,7 +42,7 @@ CarApp.filter('range', function() {
   };
 })
 
-CarApp.directive('formfield', function() {
+BikeApp.directive('formfield', function() {
   return {
     restrict: 'E', //could be E, A, C (class), M (comment)
     scope: {
@@ -53,7 +53,7 @@ CarApp.directive('formfield', function() {
   }
 })
 
-CarApp.directive('formfield2', function() {
+BikeApp.directive('formfield2', function() {
   return {
     restrict: 'E', //could be E, A, C (class), M (comment)
     scope: {

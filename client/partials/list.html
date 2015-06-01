@@ -19,12 +19,12 @@
     <th>Cena</th>
   </thead>
 
-  <tr ng-repeat="car in cars" ng-click="select($index)" ng-class="{'info': $index == index}">
-    <td>{{car.title}}</td>
-    <td>{{car.mileage | mileage}}</td>
-    <td>{{car.year}}</td>
-    <td>{{car.price | currency}}</td> <!-- currency filter -->
-    <td><img style="height: 60px; float: right;" ng-src="{{car.imgData}}"</img></td>
+  <tr ng-repeat="bike in bikes" ng-click="select($index)" ng-class="{'info': $index == index}">
+    <td>{{bike.title}}</td>
+    <td>{{bike.mileage | mileage}}</td>
+    <td>{{bike.year}}</td>
+    <td>{{bike.price | currency}}</td> <!-- currency filter -->
+    <td><img style="height: 60px; float: right;" ng-src="{{bike.imgData}}"</img></td>
   </tr>
 </table>
 

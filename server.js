@@ -4,7 +4,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , reload = require('reload')
-  , cars = require('./server/api/cars')
+  , bikes = require('./server/api/bikes')
   , colors = require('colors')
 
 var app = express()
@@ -28,14 +28,14 @@ app.get('/', function(req, res) {
   res.sendfile(path.join(clientDir, 'index.html'))
 })
 
-app.get('/api/cars', cars.list) 
+app.get('/api/bikes', bikes.list) 
 
-app.get('/api/cars/total', cars.total) //placement matters
+app.get('/api/bikes/total', bikes.total) //placement matters
 
-app.get('/api/cars/:id', cars.read) //sometimes called 'show'
-app.post('/api/cars', cars.create)
-app.put('/api/cars/:id', cars.update)
-app.del('/api/cars/:id', cars.del)
+app.get('/api/bikes/:id', bikes.read) //sometimes called 'show'
+app.post('/api/bikes', bikes.create)
+app.put('/api/bikes/:id', bikes.update)
+app.del('/api/bikes/:id', bikes.del)
 
 
 
