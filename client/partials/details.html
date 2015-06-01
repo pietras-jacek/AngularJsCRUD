@@ -1,0 +1,27 @@
+<h2>Aktualizacja danych</h2>
+
+<script type="text/ng-template" id="formfield2.html">
+  <div id="template">
+  <div class="control-group">
+    <label class="control-label" for="{{prop | lowercase}}">{{prop}}</label>
+    <div class="controls" ng-transclude>
+    </div>
+  </div>
+  </div>
+</script>
+
+<form name="carform" class="form-horizontal">
+  <formfield prop="Marka" ng-model="car.title"></formfield>
+  <formfield prop="Przebieg" ng-model="car.mileage"></formfield>
+  <formfield prop="Cena" ng-model="car.price"></formfield>
+  <formfield2 prop="Rok zakupu" ng-model="car.year">
+    <input type="text" ng-model="car.year">
+  </formfield2>
+
+  <div class="form-actions">
+    <button ng-click="save()" class="btn btn-primary">
+      {{action}}
+    </button>
+    <a href="/" class="btn">Anuluj</a>
+  </div>
+</form>
