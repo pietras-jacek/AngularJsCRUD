@@ -21,7 +21,7 @@ function ListCtrl ($scope, $http, BikesService) {
   $scope.bikes = BikesService.query()
 
   $scope.index = index; //currently selected element
-  $scope.selectedId = -1; //actual id of selected car
+  $scope.selectedId = -1; //actual id of selected bike
 
   $http.get('/api/bikes/total').success(function(body) {
     $scope.total = body.total

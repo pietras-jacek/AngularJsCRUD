@@ -52,8 +52,8 @@ function update (req, res) {
   var id = ~~req.params.id
   var bike = _(DATA).find(function(bike) { return bike.id === id })
 
-  var newCarData = req.body
-  bike = _(bike).extend(newCarData)
+  var newBikeData = req.body
+  bike = _(bike).extend(newBikeData)
 
   saveDB(function(err) {
     if (err) 
