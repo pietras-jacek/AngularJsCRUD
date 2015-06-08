@@ -1,3 +1,6 @@
 
-Let's Get CRUDdy: Building an App with AngularJS and Node.js
+Installation:
+npm install
+npm start
+app works on: http://localhost: 3000
 ============================================================

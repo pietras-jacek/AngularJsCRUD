@@ -1,4 +1,4 @@
-if (!process.env.NODE_ENV) process.env.NODE_ENV='development'
+if (!process.env.NODE_ENV) process.env.NODE_ENV='Express'
 
 var express = require('express')
   , http = require('http')
@@ -44,7 +44,7 @@ var server = http.createServer(app)
 reload(server, app)
 
 server.listen(app.get('port'), function(){
-  console.log("Web server listening in %s on port %d", colors.red(process.env.NODE_ENV), app.get('port'));
+  console.log("Serwer %s nasłuchuje na porcie %d", colors.green(process.env.NODE_ENV), app.get('port'));
 });
 
 

@@ -1,4 +1,4 @@
-var BikeApp = angular.module('BikeApp', ['ngResource'])
+var BikeApp = angular.module('BikeApp', ['ngResource', 'ngRoute'])
 
 BikeApp.config(function($routeProvider, $locationProvider) {
   $routeProvider
@@ -6,7 +6,10 @@ BikeApp.config(function($routeProvider, $locationProvider) {
     .when('/edit/:id', {controller: EditCtrl, templateUrl: '/partials/details.html'})
     .when('/new', {controller: CreateCtrl, templateUrl: '/partials/details.html'})
     .otherwise({redirectTo: '/'})
-    $locationProvider.html5Mode(true)
+    $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+});
 })
 
 BikeApp.factory('BikesService', function($resource) {
