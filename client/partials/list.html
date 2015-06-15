@@ -21,9 +21,9 @@
 
   <tr ng-repeat="bike in bikes" ng-click="select($index)" ng-class="{'info': $index == index}">
     <td>{{bike.title}}</td>
-    <td>{{bike.mileage | mileage}}</td>
+    <td>{{bike.mileage | mileage}} km</td>
     <td>{{bike.year}}</td>
-    <td>{{bike.price | currency}}</td> <!-- currency filter -->
+    <td>{{bike.price | currency:""}} zł</td> <!-- currency filter -->
   </tr>
 </table>
 
